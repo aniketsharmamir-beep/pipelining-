@@ -3,6 +3,16 @@
 ## Overview
 A small ETL pipeline that collects the Palmer Penguins dataset from the web, cleans it, creates new features, and loads the result into a SQLite database. The steps are orchestrated with Luigi, so the whole process runs with one command.
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Source: penguins.csv on GitHub] --> B[ExtractData]
+    B --> C[CleanData]
+    C --> D[TransformData]
+    D --> E[LoadData]
+    E --> F[(SQLite database)]
+```
 
 | Task | Input | Output | What it does |
 |---|---|---|---|
@@ -24,5 +34,7 @@ A screenshot of a successful run is in docs/pipeline_run.png.
 ## Limitations and Future Work
 - The source is a single CSV file, and the pipeline runs once on demand.
 - Add data validation checks, such as expected columns and value ranges.
+- Schedule the pipeline (for example with Airflow or cron) so it runs automatically.
+- Load into a production database such as PostgreSQL.
 - Schedule the pipeline (for example with Airflow or cron) so it runs automatically.
 - Load into a production database such as PostgreSQL.
