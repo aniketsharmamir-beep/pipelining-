@@ -3,16 +3,6 @@
 ## Overview
 A small ETL pipeline that collects the Palmer Penguins dataset from the web, cleans it, creates new features, and loads the result into a SQLite database. The steps are orchestrated with Luigi, so the whole process runs with one command.
 
-## Architecture
-
-```mermaid
-flowchart LR
-    A[Source: penguins.csv on GitHub] --> B[ExtractData]
-    B --> C[CleanData]
-    C --> D[TransformData]
-    D --> E[LoadData]
-    E --> F[(SQLite database)]
-```
 
 | Task | Input | Output | What it does |
 |---|---|---|---|
